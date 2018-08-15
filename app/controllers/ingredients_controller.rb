@@ -1,32 +1,26 @@
 class IngredientsController < ApplicationController
 
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.sort_by_allergy_count
   end
-
-  def new
-    @student = Ingredient.new
 
   def show
     @ingredient = Ingredient.find(params[:id])
-
+    @recipes = @ingredient.recipes
   end
 
-  def update
-    @ingredient = Ingredient.find(params[:id])
-    @ingredient.update(ingredient_params)
-    redirect_to ingredient_path(@ingredient)
-  end
-
-
-
-
-
-
-
-  private
-
-  def ingredient_params
-    params.require(:ingredient).permit(:ingredient_name)
-  end
+  # def new
+  #   @ingredient = Ingredient.new
+  #
+  # def create
+	#   @ingredient = Ingredient.new(ingredient_params)
+	#   @ingredient.save
+	#   redirect_to ingredient_path(@ingredient)
+	# end
+  #
+  # private
+  #
+  # def ingredient_params
+  #   params.require(:ingredient).permit(:ingredient_name)
+  # end
 end

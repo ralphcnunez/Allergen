@@ -1,0 +1,12 @@
+<%= form_tag("/recipes", method: "get") do %>
+  <%= label_tag(:q, "Number of ingredients:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% @recipe_hash.each do |recipe, ingredient_count| %>
+<h1>  <% if ingredient_count == params[:q].to_i %>
+      <%= recipe.recipe_name %>
+      <% end %>
+</h1>
+<% end %>
