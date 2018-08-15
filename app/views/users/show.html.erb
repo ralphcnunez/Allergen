@@ -1,0 +1,6 @@
+<h1><%= @user.name %></h1>
+<h2>has the following recipes:</h2>
+<h3><% @user_recipes.each do |recipe|%>
+    <%= recipe.recipe_name %> <br>
+    <% end %>
+</h3>
